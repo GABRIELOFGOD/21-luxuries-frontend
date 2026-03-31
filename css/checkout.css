@@ -1,0 +1,712 @@
+/**
+ * Checkout & Order Confirmation Styles
+ * Professional modal forms for order processing
+ */
+
+:root {
+  --primary-color: #f84258;
+  --primary-dark: #d63449;
+  --text-dark: #333333;
+  --text-light: #666666;
+  --text-muted: #999999;
+  --border-color: #e0e0e0;
+  --bg-light: #f9f9f9;
+  --bg-white: #ffffff;
+  --success-color: #4caf50;
+  --error-color: #f44336;
+  --warning-color: #ff9800;
+  --info-color: #2196f3;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal Container */
+.modal-container {
+  background-color: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  max-width: 550px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 10001;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-white);
+  position: sticky;
+  top: 0;
+  z-index: 10002;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.modal-close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  color: var(--text-light);
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  border-radius: 6px;
+}
+
+/* Checkout Form */
+.checkout-form,
+.checkout-modal {
+  padding: 24px;
+}
+
+.checkout-modal .form-group {
+  margin-bottom: 20px;
+}
+
+.checkout-modal .form-group:last-of-type {
+  margin-bottom: 24px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(248, 66, 88, 0.1);
+  background-color: var(--bg-white);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+.form-group input[readonly],
+.form-group textarea[readonly] {
+  background-color: var(--bg-light);
+  cursor: not-allowed;
+  color: var(--text-light);
+}
+
+/* Error Messages */
+.error-message {
+  font-size: 12px;
+  color: var(--error-color);
+  min-height: 16px;
+  display: block;
+  margin-top: -6px;
+}
+
+.form-group.error input,
+.form-group.error textarea {
+  border-color: var(--error-color);
+  background-color: rgba(244, 67, 54, 0.05);
+}
+
+/* Order Preview */
+.order-preview {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.order-preview h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.preview-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.preview-item span:first-child {
+  font-weight: 500;
+}
+
+.preview-item span:last-child {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.preview-item.total {
+  padding-top: 12px;
+  padding-bottom: 0;
+  margin-top: 8px;
+  border-top: 1px solid var(--border-color);
+  font-size: 15px;
+}
+
+.preview-item.total span:last-child {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-whatsapp {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 48px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+  box-shadow: 0 6px 16px rgba(248, 66, 88, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-secondary {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border: 2px solid var(--border-color);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: rgba(248, 66, 88, 0.05);
+}
+
+.btn-whatsapp {
+  background-color: #25d366;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1fa85a;
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp:active {
+  transform: translateY(0);
+}
+
+/* Loading Spinner */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-loader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Copy Input Group */
+.copy-input-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.copy-input-group input {
+  flex: 1;
+}
+
+.display-input {
+  background-color: var(--bg-light) !important;
+  color: var(--text-dark) !important;
+  cursor: default;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 12px 14px;
+}
+
+.copy-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background-color: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+.copy-btn:active {
+  transform: scale(0.95);
+}
+
+.copy-btn.copied {
+  background-color: var(--success-color);
+  animation: pulse 0.4s ease;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* Confirmation Modal */
+.confirmation-modal {
+  text-align: center;
+  padding: 40px 24px;
+  background: linear-gradient(135deg, rgba(248, 66, 88, 0.02) 0%, rgba(76, 175, 80, 0.02) 100%);
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  background-color: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.confirmation-modal h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 12px 0;
+}
+
+.confirmation-message {
+  font-size: 15px;
+  color: var(--text-light);
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+.confirmation-modal .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.confirmation-modal label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* WhatsApp Section */
+.whatsapp-section {
+  background-color: rgba(37, 211, 102, 0.08);
+  border: 2px solid rgba(37, 211, 102, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 24px 0;
+  text-align: center;
+}
+
+.whatsapp-text {
+  font-size: 14px;
+  color: var(--text-light);
+  margin: 0 0 16px 0;
+}
+
+.whatsapp-icon {
+  font-size: 20px;
+}
+
+/* Confirmation Actions */
+.confirmation-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.confirmation-actions .btn-secondary,
+.confirmation-actions .btn-primary {
+  flex: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Tablet Responsive */
+@media (max-width: 768px) {
+  .modal-container {
+    width: 95%;
+    max-height: 90vh;
+    border-radius: 12px;
+  }
+
+  .modal-header {
+    padding: 20px;
+  }
+
+  .modal-header h2 {
+    font-size: 20px;
+  }
+
+  .checkout-form,
+  .confirmation-modal {
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-whatsapp {
+    font-size: 14px;
+    padding: 12px 16px;
+    min-height: 44px;
+  }
+
+  .success-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .confirmation-modal h2 {
+    font-size: 22px;
+  }
+
+  .confirmation-actions {
+    flex-direction: column;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .modal-container {
+    width: 100%;
+    max-height: 95vh;
+    border-radius: 16px 16px 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .modal-header {
+    padding: 16px;
+  }
+
+  .modal-header h2 {
+    font-size: 18px;
+  }
+
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+
+  .checkout-form,
+  .confirmation-modal {
+    padding: 16px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .form-group textarea {
+    min-height: 70px;
+  }
+
+  .order-preview {
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+
+  .order-preview h3 {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .preview-item {
+    font-size: 12px;
+    padding: 6px 0;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-whatsapp {
+    width: 100%;
+    font-size: 13px;
+    padding: 12px 16px;
+    min-height: 44px;
+  }
+
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .confirmation-modal h2 {
+    font-size: 20px;
+  }
+
+  .confirmation-message {
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  .confirmation-modal .form-group {
+    margin-bottom: 16px;
+  }
+
+  .confirmation-modal label {
+    font-size: 12px;
+  }
+
+  .whatsapp-section {
+    padding: 16px;
+    margin: 20px 0;
+  }
+
+  .whatsapp-text {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .copy-input-group {
+    flex-wrap: wrap;
+  }
+
+  .copy-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .display-input {
+    font-size: 12px;
+  }
+
+  .confirmation-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .confirmation-actions .btn-secondary,
+  .confirmation-actions .btn-primary {
+    width: 100%;
+  }
+}
+
+/* Scrollbar Styling */
+.modal-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 4px;
+}
+
+.modal-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-light);
+}

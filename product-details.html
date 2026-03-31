@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+  <link rel="stylesheet" href="css/style_index.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/product-details.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+  <!-- navbar -->
+  <nav> 
+    <div class="logo">
+      <h3><a href="index.html" class="logo-name">21 Luxuries</a></h3>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="contact.html">ContactUs</a></li>
+      <li><a href="login.html" id="login">Login</a></li>
+    </ul>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+  <!-- navbar -->
+
+  <!-- Breadcrumb Navigation -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <a href="products.html">Products</a>
+    <span>/</span>
+    <span class="current" id="breadcrumb-product">Product</span>
+  </div>
+
+  <!-- Product Details Container -->
+  <div class="product-details-container">
+    <!-- Product Images Section -->
+    <div class="product-images-section">
+      <div class="main-image">
+        <img id="mainImage" src="" alt="Product Image">
+      </div>
+      <div class="thumbnail-images">
+        <div id="thumbnailContainer"></div>
+      </div>
+    </div>
+
+    <!-- Product Info Section -->
+    <div class="product-info-section">
+      <div class="product-header">
+        <h1 id="productName"></h1>
+        <div class="product-rating">
+          <div class="stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star-half">☆</span>
+          </div>
+          <span class="rating-count">(124 reviews)</span>
+        </div>
+      </div>
+
+      <!-- Price Section -->
+      <div class="price-section">
+        <span class="current-price" id="productPrice">₦0</span>
+        <span class="original-price" id="originalPrice"></span>
+      </div>
+
+      <!-- Stock Status -->
+      <div class="stock-status">
+        <span id="stockIndicator" class="stock-in"></span>
+        <span id="stockText">In Stock</span>
+      </div>
+
+      <!-- Product Description -->
+      <div class="product-description">
+        <h3>About this product</h3>
+        <p id="productDescription"></p>
+      </div>
+
+      <!-- Product Details Grid -->
+      <div class="product-details-grid">
+        <div class="detail-item">
+          <label>Category</label>
+          <p id="productCategory">-</p>
+        </div>
+        <div class="detail-item">
+          <label>Stock Available</label>
+          <p id="productStock">-</p>
+        </div>
+      </div>
+
+      <!-- Quantity and Add to Cart Section -->
+      <div class="cart-section">
+        <div class="quantity-selector">
+          <label for="quantity">Quantity:</label>
+          <div class="quantity-input">
+            <button class="qty-btn" id="decreaseQty">−</button>
+            <input type="number" id="quantity" value="1" min="1" readonly>
+            <button class="qty-btn" id="increaseQty">+</button>
+          </div>
+        </div>
+
+        <button class="add-to-cart-btn" id="addToCartBtn">
+          <span class="btn-icon">🛒</span>
+          Add to Cart
+        </button>
+
+        <button class="wishlist-btn" id="wishlistBtn">
+          <span class="wishlist-icon">♡</span>
+        </button>
+      </div>
+
+      <!-- Success Message -->
+      <div class="success-message" id="successMessage">
+        <span class="checkmark">✓</span>
+        <span id="successText">Added to cart successfully!</span>
+      </div>
+
+      <!-- Shipping Info -->
+      <div class="shipping-info">
+        <div class="info-item">
+          <span class="icon">📦</span>
+          <div>
+            <strong>Free Shipping</strong>
+            <p>On orders above ₦50,000</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">🔄</span>
+          <div>
+            <strong>Easy Returns</strong>
+            <p>7-day return policy</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">✓</span>
+          <div>
+            <strong>Secure Payment</strong>
+            <p>100% secure transactions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Products Section -->
+  <div class="related-products-section">
+    <h2>You Might Also Like</h2>
+    <div class="related-products-container" id="relatedProductsContainer">
+      <!-- Related products will be loaded here -->
+    </div>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar-header">
+      <h3>Shopping Cart</h3>
+      <button class="close-sidebar" id="closeSidebarBtn">✕</button>
+    </div>
+    <div class="cart-sidebar-content" id="cartSidebarContent">
+      <!-- Cart items will be loaded here -->
+    </div>
+    <div class="cart-sidebar-footer">
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span id="subtotal">₦0</span>
+        </div>
+        <div class="summary-row">
+          <span>Tax (10%):</span>
+          <span id="tax">₦0</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total:</span>
+          <span id="cartTotal">₦0</span>
+        </div>
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+      <button class="continue-shopping-btn" id="continueShopping">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- Cart Toggle Button -->
+  <button class="cart-toggle-btn" id="cartToggleBtn" onclick="window.location.href='cart.html'">
+    🛒 <span id="cartCount">0</span>
+  </button>
+
+  <!-- Overlay for sidebar -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <script src="js/cart.js"></script>
+  <script src="js/product-details.js"></script>
+</body>
+</html>
