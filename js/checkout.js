@@ -5,9 +5,9 @@
 
 // Configuration
 const CHECKOUT_CONFIG = {
-  API_BASE_URL: 'http://localhost:3000/api',
+  API_BASE_URL: 'https://21-luxuries.vercel.app/api',
   WHATSAPP_NUMBER: '2349039194587',
-  TRACKING_BASE_URL: "http://localhost:3000" + '/order/', // Will be appended with order ID
+  TRACKING_BASE_URL: "https://21-luxuries.vercel.app" + '/order/', // Will be appended with order ID
 };
 
 /**

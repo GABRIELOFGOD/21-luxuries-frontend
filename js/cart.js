@@ -3,7 +3,7 @@
  * Manages shopping cart data, storage, and retrieval
  */
 
-// const BACKEND_URL = "http://localhost:3000/api";
+// const BACKEND_URL = "https://21-luxuries.vercel.app/api";
 const CART_STORAGE_KEY = "merlin_fashion_cart";
 const WISHLIST_STORAGE_KEY = "merlin_fashion_wishlist";
 

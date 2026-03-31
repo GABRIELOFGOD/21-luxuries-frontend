@@ -6,7 +6,7 @@
 let currentProduct = null;
 let relatedProducts = [];
 // const BACKEND_URL = "https://21-luxuries.vercel.app/api";
-const BACKEND_URL = "http://localhost:3000/api";
+const BACKEND_URL = "https://21-luxuries.vercel.app/api";
 
 /**
  * Initialize page on load
