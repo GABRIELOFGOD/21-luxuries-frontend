@@ -267,9 +267,9 @@
 }
 
 .checkout-btn:hover {
-  background-color: #d63449;
+  background-color: #14332bd1;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(248, 66, 88, 0.3);
+  box-shadow: 0 6px 20px rgba(20, 51, 43, 0.3);
 }
 
 .checkout-btn:active {
@@ -335,7 +335,7 @@
 }
 
 #applyPromoBtn:hover {
-  background-color: #d63449;
+  background-color: #14332bd1;
 }
 
 /* Benefits Card */
@@ -431,9 +431,9 @@
 }
 
 .start-shopping-btn:hover {
-  background-color: #d63449;
+  background-color: #14332bd1;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(248, 66, 88, 0.3);
+  box-shadow: 0 6px 20px rgba(20, 51, 43, 0.3);
 }
 
 /* Animations */

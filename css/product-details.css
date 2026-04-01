@@ -747,7 +747,7 @@
   border-radius: 50%;
   font-size: 24px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(248, 66, 88, 0.3);
+  box-shadow: 0 4px 12px rgba(20, 51, 43, 0.3);
   transition: all 0.3s ease;
   z-index: 999;
   display: flex;

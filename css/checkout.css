@@ -5,7 +5,7 @@
 
 :root {
   --primary-color: #14332b;
-  --primary-dark: #d63449;
+  --primary-dark: #14332bd1;
   --text-dark: #333333;
   --text-light: #666666;
   --text-muted: #999999;
@@ -267,7 +267,7 @@
 
 .btn-primary:hover:not(:disabled) {
   background-color: var(--primary-dark);
-  box-shadow: 0 6px 16px rgba(248, 66, 88, 0.3);
+  box-shadow: 0 6px 16px rgba(20, 51, 43, 0.3);
   transform: translateY(-2px);
 }
 
