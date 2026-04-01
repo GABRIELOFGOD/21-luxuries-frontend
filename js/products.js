@@ -62,7 +62,7 @@ function setupProductEventListeners() {
     } else if (addBtn) {
       e.stopPropagation();
       const product = addBtn.closest('.product');
-      const productId = product.id;
+      const productId = product._id;
       const productData = products.find(p => p._id === productId);
       if (productData) {
         cart.addItem(productData, 1);
@@ -70,6 +70,14 @@ function setupProductEventListeners() {
       }
     }
   });
+}
+
+function addToCart(productId) {
+  const productData = products.find(p => p._id === productId);
+  if (productData) {
+    cart.addItem(productData, 1);
+    showAddToCartMessage();
+  }
 }
 
 function showAddToCartMessage() {
@@ -199,15 +207,17 @@ const renderProducts = () => {
       <div class="product-container">
         ${products.map(product => `
           <div key="${product._id}" class="product" id="${product._id}">
-            <img src="${product.images[0]}" alt="">
+            <div class="product-image-wrapper">
+              <img src="${product.images[0]}" alt="${product.name}" class="product-image">
+            </div>
             <h4>${product.name}</h4>
             <span>${product.description}</span>
             <div class="product-card-bottom">
               <b class="colored-word price">${formatPrice(product.price)}</b>
-              <button class="add-to-cart-btn">Add to Cart</button>
+              <button onclick="addToCart('${product._id}')" class="add-to-cart-btn">Add to Cart</button>
             </div>
           </div>
-          `)}
+          `).join('')}
       </div>
 
       <div class="page-navigator">
@@ -219,10 +229,6 @@ const renderProducts = () => {
         </div>
         <button ${pagination.page === pagination.pages || !pagination.hasNext ? 'disabled' : ''} onclick="nextPage()">&rightarrow; Next</button>
       </div>
-
-      <h4 class="sry-msg">Uh-Oh! We are<span class="colored-word"> done</span>🛒</h4>
-      <center><hr class="last-hr-of-product"></center>
-      <br><br>
 
       <div class="cart-details">
         <h2 class="head-of-cart">Your Cart</h2>
