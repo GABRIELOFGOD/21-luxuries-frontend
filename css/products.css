@@ -14,10 +14,10 @@
   text-align: center;
 }
 .colored-word{
-  color:#f84258;
+  color:#14332b;
 }
 .colored-word-bigger-size{
-  color:#f84258;
+  color:#14332b;
   font-size:35px;
 }
 .products-main {
@@ -39,7 +39,7 @@
 
 .loader {
   border: 8px solid #f3f3f3;
-  border-top: 8px solid #f84258;
+  border-top: 8px solid #14332b;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -104,6 +104,13 @@
     transform: scale(1.05);
 }
 
+.product-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .sub-product-title h3 {
   color: #333;
   margin: 20px 0;
@@ -133,7 +140,7 @@
 
 .product-container .product .price {
   font-size: 12px;
-  color: #f84258;
+  color: #14332b;
   font-weight: bolder;
   margin: auto 0;
 }
@@ -145,7 +152,7 @@
 }
 
 .product-container .product .add-to-cart-btn {
-  background-color: #f84258;
+  background-color: #14332b;
   color: white;
   border: none;
   padding: 8px 12px;
@@ -180,13 +187,12 @@
 .page-navigator {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin: 50px  0;
   gap: 10px;
-  margin-bottom: 50px;
 }
 
 .page-navigator button {
-  background-color: #f84258;
+  background-color: #14332b;
   color: white;
   border: none;
   padding: 8px 12px;
@@ -209,7 +215,7 @@
 }
 
 .page-navigator .number-show .active {
-  background-color: #f84258;
+  background-color: #14332b;
   color: white;
   border: none;
   padding: 8px 12px;
@@ -242,7 +248,7 @@
   list-style-type:decimal;
 }
 .head-of-cart{
-  color:#f84258;
+  color:#14332b;
 }
 .hr-of-cart-head{
   border: 1px solid black;

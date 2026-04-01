@@ -346,7 +346,7 @@ function showErrorState(message) {
         <a href="products.html" style="
           display: inline-block;
           padding: 12px 30px;
-          background-color: #f84258;
+          background-color: #14332b;
           color: white;
           text-decoration: none;
           border-radius: 4px;

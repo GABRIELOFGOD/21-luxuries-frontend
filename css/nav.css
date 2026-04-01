@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,700&family=Cormorant+Garamond:wght@300;400&display=swap');
+
 nav{
     display:flex;
     justify-content: space-around;
@@ -16,24 +18,24 @@ nav a{
     color:black;
 }
 nav a:hover{
-    color:#f84258;
+    color:#14332b;
     text-decoration: none;
 
 }
 #login{
-    color:#f84258;
+    color:#14332b;
 }
 .logo h3{
-    font-family: 'Sacramento', cursive;
+    font-family: 'Cormorant Garamond',cursive,serif;
     font-weight: 500;
     text-align: center;
     font-size:45px;
 }
 .logo-name{
-     color:#f84258;
+     color:#14332b;
 }
 .logo-name:hover{
-    color:#f84258;
+    color:#14332b;
     text-decoration: none;
 }
 
@@ -45,10 +47,10 @@ nav a:hover{
     letter-spacing: 2px;
     font-weight: 600;
     font-size:14px;
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
 }
 .burger div{
-    background-color:#f84258;
+    background-color:#14332b;
     width:25px;
     height:3px;
     margin:5px;

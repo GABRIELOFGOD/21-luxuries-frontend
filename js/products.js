@@ -127,7 +127,7 @@ function setupCartUI() {
       right: 30px;
       width: 60px;
       height: 60px;
-      background-color: #f84258;
+      background-color: #14332b;
       color: white;
       border: none;
       border-radius: 50%;
@@ -210,11 +210,13 @@ const renderProducts = () => {
             <div class="product-image-wrapper">
               <img src="${product.images[0]}" alt="${product.name}" class="product-image">
             </div>
-            <h4>${product.name}</h4>
-            <span>${product.description}</span>
-            <div class="product-card-bottom">
-              <b class="colored-word price">${formatPrice(product.price)}</b>
-              <button onclick="addToCart('${product._id}')" class="add-to-cart-btn">Add to Cart</button>
+            <div class="product-details">
+              <h4>${product.name}</h4>
+              <span>${product.description}</span>
+              <div class="product-card-bottom">
+                <b class="colored-word price">${formatPrice(product.price)}</b>
+                <button onclick="addToCart('${product._id}')" class="add-to-cart-btn">Add to Cart</button>
+              </div>
             </div>
           </div>
           `).join('')}
