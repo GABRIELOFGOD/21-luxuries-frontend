@@ -1,6 +1,6 @@
 // constants
-// const BACKEND_URL = "https://21-luxuries.vercel.app/api";
-const BACKEND_URL = "https://21-luxuries.vercel.app/api";
+// const BACKEND_URL = "https://www.app.21luxuries.com/api";
+const BACKEND_URL = "https://www.app.21luxuries.com/api";
 let productLoading = false;
 let products = [];
 let categories = [];
