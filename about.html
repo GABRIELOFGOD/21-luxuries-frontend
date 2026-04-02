@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — 21 Luxuries Boutique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/nav.css">
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES
+    ============================================= */
+    :root {
+      /* Brand: white bg, deep forest green as the primary colour */
+      --black:      #ffffff;          /* was page-black → now page-white        */
+      --black-soft: #f7f7f5;          /* was dark section bg → now light cream  */
+      --black-mid:  #efefec;          /* mid-section bg                         */
+      --white:      #1a3d2b;          /* was white text → now brand green text  */
+      --off-white:  #f5f3ef;
+      --gold:       #1a3d2b;          /* accent colour → brand green            */
+      --gold-light: #2d6147;          /* lighter green for hover                */
+      --gold-dim:   #3a6b52;          /* muted green                            */
+      --gray:       #4a6657;          /* body text → dark green-gray            */
+      --gray-light: #3d5c4a;          /* secondary text → medium green          */
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Jost', sans-serif;
+
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-slow: 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1a3d2b;
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =============================================
+       SCROLLBAR
+    ============================================= */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #ffffff; }
+    ::-webkit-scrollbar-thumb { background: #1a3d2b; border-radius: 2px; }
+
+    /* =============================================
+       ANIMATIONS
+    ============================================= */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes lineExpand {
+      from { width: 0; }
+      to   { width: 60px; }
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =============================================
+       GOLD DIVIDER
+    ============================================= */
+    .gold-line {
+      width: 60px;
+      height: 1px;
+      background: #1a3d2b;
+      margin: 0 auto 2rem;
+    }
+
+    .gold-line--left {
+      margin-left: 0;
+    }
+
+    /* =============================================
+       SECTION LABEL
+    ============================================= */
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #1a3d2b;
+      margin-bottom: 1rem;
+    }
+
+    /* =============================================
+       NAVIGATION
+    ============================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.97), rgba(255,255,255,0.0));
+      transition: background var(--transition);
+    }
+
+    nav.scrolled {
+      background: rgba(255,255,255,0.98);
+      border-bottom: 1px solid rgba(26,61,43,0.12);
+      box-shadow: 0 2px 20px rgba(26,61,43,0.06);
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #1a3d2b;
+    }
+
+    .nav-brand span {
+      color: #1a3d2b;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #3d5c4a;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: #1a3d2b;
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover { color: #1a3d2b; }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* =============================================
+       HERO SECTION
+    ============================================= */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Hero: white bg with subtle green radial glow */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(26,61,43,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 30%, rgba(26,61,43,0.04) 0%, transparent 55%),
+        linear-gradient(160deg, #fdfdfd 0%, #ffffff 50%, #f4f7f5 100%);
+    }
+
+    /* Subtle noise texture */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    /* Decorative geometric lines */
+    .hero-decor {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-decor::before,
+    .hero-decor::after {
+      content: '';
+      position: absolute;
+      border: 1px solid rgba(26,61,43,0.08);
+    }
+
+    .hero-decor::before {
+      top: 10%; left: 10%;
+      right: 10%; bottom: 10%;
+    }
+
+    .hero-decor::after {
+      top: 15%; left: 15%;
+      right: 15%; bottom: 15%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.4s ease forwards;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.6em;
+      text-transform: uppercase;
+      color: #3a6b52;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.4s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.08em;
+      color: #1a3d2b;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeInUp 1.2s ease 0.3s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: #1a3d2b;
+      font-weight: 400;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-sans);
+      font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: #4a6657;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.9s forwards;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.5s forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #3a6b52;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, #1a3d2b, transparent);
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 1;   }
+    }
+
+    /* =============================================
+       SECTION WRAPPER
+    ============================================= */
+    section {
+      padding: 7rem 4rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(26,61,43,0.15), transparent);
+      margin: 0;
+    }
+
+    /* =============================================
+       ABOUT SECTION
+    ============================================= */
+    .about {
+      background: #ffffff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image-wrap::before {
+      content: '';
+      position: absolute;
+      top: -1.5rem; left: -1.5rem;
+      right: 1.5rem; bottom: 1.5rem;
+      border: 1px solid rgba(26,61,43,0.2);
+      z-index: 0;
+      transition: transform var(--transition-slow);
+    }
+
+    .about-image-wrap:hover::before {
+      transform: translate(6px, 6px);
+    }
+
+    .about-image-wrap img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      filter: grayscale(20%) contrast(1.05);
+      transition: transform var(--transition-slow), filter var(--transition-slow);
+    }
+
+    .about-image-wrap:hover img {
+      transform: scale(1.04);
+      filter: grayscale(0%) contrast(1.05);
+    }
+
+    /* Green ribbon on image */
+    .about-image-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 70%; height: 4px;
+      background: linear-gradient(to right, transparent, #1a3d2b);
+      z-index: 2;
+    }
+
+    .about-text { padding: 1rem 0; }
+
+    .about-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 4vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.8rem;
+      color: #1a3d2b;
+    }
+
+    .about-heading em {
+      font-style: italic;
+      color: #1a3d2b;
+    }
+
+    .about-body {
+      font-size: 0.95rem;
+      color: #4a6657;
+      line-height: 2;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-body strong {
+      color: #1a3d2b;
+      font-weight: 500;
+    }
+
+    .about-signature {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-style: italic;
+      color: #1a3d2b;
+      margin-top: 2.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* =============================================
+       MISSION & VISION
+    ============================================= */
+    .mv-section {
+      background: #f4f7f5;
+    }
+
+    .mv-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .mv-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 300;
+      color: #1a3d2b;
+    }
+
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .mv-card {
+      position: relative;
+      padding: 3.5rem;
+      border: 1px solid rgba(26,61,43,0.12);
+      background: rgba(255,255,255,0.8);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .mv-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,61,43,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .mv-card:hover {
+      border-color: rgba(26,61,43,0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 25px 60px rgba(26,61,43,0.1), 0 0 0 1px rgba(26,61,43,0.06);
+    }
+
+    .mv-card:hover::before { opacity: 1; }
+
+    .mv-card-icon {
+      font-size: 1.4rem;
+      color: #1a3d2b;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .mv-card-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: #1a3d2b;
+      margin-bottom: 1rem;
+    }
+
+    .mv-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #1a3d2b;
+      margin-bottom: 1.2rem;
+    }
+
+    .mv-card-text {
+      font-size: 0.9rem;
+      color: #4a6657;
+      line-height: 1.9;
+    }
+
+    /* =============================================
+       VALUES SECTION
+    ============================================= */
+    .values-section {
+      background: #ffffff;
+    }
+
+    .values-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .values-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 300;
+      color: #1a3d2b;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .value-card {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(26,61,43,0.15);
+      position: relative;
+      transition: transform var(--transition);
+    }
+
+    .value-card::after {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0;
+      width: 0; height: 1px;
+      background: #1a3d2b;
+      transition: width var(--transition-slow);
+    }
+
+    .value-card:hover { transform: translateY(-5px); }
+    .value-card:hover::after { width: 100%; }
+
+    .value-icon {
+      width: 52px; height: 52px;
+      margin: 0 auto 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(26,61,43,0.25);
+      color: #1a3d2b;
+      font-size: 1.3rem;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .value-card:hover .value-icon {
+      background: rgba(26,61,43,0.07);
+      border-color: #1a3d2b;
+    }
+
+    .value-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: #1a3d2b;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+
+    .value-text {
+      font-size: 0.82rem;
+      color: #4a6657;
+      line-height: 1.8;
+    }
+
+    /* =============================================
+       WHY CHOOSE US
+    ============================================= */
+    .why-section {
+      background: #f4f7f5;
+    }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .why-text-col {}
+
+    .why-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: #1a3d2b;
+      margin-bottom: 1.5rem;
+    }
+
+    .why-heading em {
+      font-style: italic;
+      color: #1a3d2b;
+    }
+
+    .why-intro {
+      font-size: 0.9rem;
+      color: #4a6657;
+      line-height: 1.9;
+      margin-bottom: 0;
+    }
+
+    .why-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .why-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid rgba(26,61,43,0.08);
+      transition: padding-left var(--transition);
+      cursor: default;
+    }
+
+    .why-feature:first-child { border-top: 1px solid rgba(26,61,43,0.08); }
+
+    .why-feature:hover { padding-left: 0.6rem; }
+
+    .why-feature-num {
+      font-family: var(--font-serif);
+      font-size: 0.75rem;
+      color: #1a3d2b;
+      letter-spacing: 0.1em;
+      min-width: 28px;
+      padding-top: 0.2rem;
+    }
+
+    .why-feature-content {}
+
+    .why-feature-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #1a3d2b;
+      margin-bottom: 0.3rem;
+    }
+
+    .why-feature-text {
+      font-size: 0.82rem;
+      color: #4a6657;
+      line-height: 1.8;
+    }
+
+    /* =============================================
+       CTA SECTION
+    ============================================= */
+    .cta-section {
+      background: #1a3d2b;
+      text-align: center;
+      padding: 9rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #ffffff;
+      margin-bottom: 3rem;
+      line-height: 1.1;
+    }
+
+    .btn-luxury {
+      display: inline-block;
+      padding: 1.1rem 3.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.6);
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: color var(--transition);
+    }
+
+    .btn-luxury::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .btn-luxury:hover { color: #1a3d2b; }
+    .btn-luxury:hover::before { transform: scaleX(1); }
+
+    .btn-luxury span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: #f4f7f5;
+      border-top: 1px solid rgba(26,61,43,0.1);
+      padding: 3rem 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #1a3d2b;
+    }
+
+    .footer-brand span { color: #1a3d2b; font-weight: 600; }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: #4a6657;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .social-link {
+      width: 36px; height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(26,61,43,0.2);
+      color: #4a6657;
+      font-size: 0.75rem;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+
+    .social-link:hover {
+      border-color: #1a3d2b;
+      color: #1a3d2b;
+      background: rgba(26,61,43,0.06);
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      nav { padding: 1.5rem 2.5rem; }
+      section { padding: 5rem 2.5rem; }
+
+      .about-grid,
+      .mv-grid,
+      .why-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .about-image-wrap img { height: 420px; }
+      .about-image-wrap::before { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+
+      .hero-title { font-size: clamp(2.8rem, 10vw, 4.5rem); }
+
+      .values-grid { grid-template-columns: 1fr 1fr; }
+
+      .cta-section { padding: 6rem 1.5rem; }
+
+      footer { padding: 2.5rem 1.5rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .mv-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <!-- <nav id="navbar">
+    <div class="nav-brand"><span>21</span> Luxuries</div>
+    <ul class="nav-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#values">Values</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#cta">Collection</a></li>
+    </ul>
+  </nav> -->
+
+  <nav>
+    <div class="logo">
+      <h3><a href="index.html" class="logo-name">21 Luxuries</a></h3>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="contact.html">ContactUs</a></li>
+      <li><a href="about.html">AboutUs</a></li>
+      
+    </ul>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+  
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-decor"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Est. 2026 — Offa &amp; Beyond</p>
+      <h1 class="hero-title">21 <em>Luxuries</em><br></h1>
+      <p class="hero-tagline">Street Wear With. &nbsp;a Luxury mindset.</p>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Image Column -->
+        <div class="about-image-wrap fade-in">
+          <img
+            src="/images/brand/21 luxuries.jpeg"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Text Column -->
+        <div class="about-text fade-in">
+          <p class="section-label">About the House</p>
+          <div class="gold-line gold-line--left"></div>
+          <h2 class="about-heading">Our <em>Story</em></h2>
+
+          <p class="about-body">
+            Born from an unwavering belief that fashion is the most intimate form of self-expression,
+            <strong>21 Luxuries </strong> was founded to bring the world's most exquisite pieces
+            to those who live by a higher standard.
+          </p>
+          <p class="about-body">
+            We are not merely a boutique  we are curators of a lifestyle. Every garment,
+            every accessory, every detail in our collection has been selected with a singular purpose:
+            to clothe you in <strong>confidence, class, and timeless elegance</strong>.
+          </p>
+          <p class="about-body">
+            Our philosophy is rooted in the belief that true luxury transcends trends. It is the quiet
+            power of a perfectly tailored silhouette, the subtle statement of impeccable fabric,
+            the unmistakable aura of a woman who knows exactly who she is.
+          </p>
+
+          <div class="about-signature">21 Luxuries</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== MISSION & VISION ========== -->
+  <section class="mv-section" id="mission">
+    <div class="container">
+
+      <div class="mv-header fade-in">
+        <p class="section-label">Our Purpose</p>
+        <div class="gold-line"></div>
+        <h2 class="mv-heading">Mission &amp; Vision</h2>
+      </div>
+
+      <div class="mv-grid">
+
+        <div class="mv-card fade-in">
+          <span class="mv-card-icon">◈</span>
+          <p class="mv-card-label">Mission</p>
+          <h3 class="mv-card-title">What We Do</h3>
+          <p class="mv-card-text">
+            To provide timeless luxury and empower confidence through fashion offering
+            a handpicked selection of pieces that speak to the soul, elevate the spirit,
+            and honour the art of dressing with intention.
+          </p>
+        </div>
+
+        <div class="mv-card fade-in">
+          <span class="mv-card-icon">◇</span>
+          <p class="mv-card-label">Vision</p>
+          <h3 class="mv-card-title">Where We're Going</h3>
+          <p class="mv-card-text">
+            To become a globally recognised symbol of elegance and sophistication
+            a destination where discerning individuals discover pieces that define
+            their legacy and reflect their irreplaceable individuality.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== VALUES ========== -->
+  <section class="values-section" id="values">
+    <div class="container">
+
+      <div class="values-header fade-in">
+        <p class="section-label">What We Stand For</p>
+        <div class="gold-line"></div>
+        <h2 class="values-heading">Our Values</h2>
+      </div>
+
+      <div class="values-grid">
+
+        <div class="value-card fade-in">
+          <div class="value-icon">✦</div>
+          <h3 class="value-title">Elegance</h3>
+          <p class="value-text">Grace is never accidental. Every piece we carry embodies the quiet power of refined, purposeful beauty.</p>
+        </div>
+
+        <div class="value-card fade-in">
+          <div class="value-icon">◎</div>
+          <h3 class="value-title">Quality</h3>
+          <p class="value-text">We accept nothing short of exceptional. Each item is sourced with rigorous attention to craftsmanship and material integrity.</p>
+        </div>
+
+        <div class="value-card fade-in">
+          <div class="value-icon">◈</div>
+          <h3 class="value-title">Exclusivity</h3>
+          <p class="value-text">Luxury means being singular. Our curated collections are intentionally limited, so that wearing us is wearing the rare.</p>
+        </div>
+
+        <div class="value-card fade-in">
+          <div class="value-icon">◇</div>
+          <h3 class="value-title">Confidence</h3>
+          <p class="value-text">Fashion is power. We dress women who walk into rooms and own them — because confidence is the ultimate luxury.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div class="why-inner">
+
+        <div class="why-text-col fade-in">
+          <p class="section-label">The 21 Luxuries Difference</p>
+          <div class="gold-line gold-line--left"></div>
+          <h2 class="why-heading">Why Choose <em>Us</em></h2>
+          <p class="why-intro">
+            In a world of fast fashion and fleeting trends, we stand apart.
+            At 21 Luxuries, every decision we make is guided by one principle:
+            you deserve the very best.
+          </p>
+        </div>
+
+        <div class="why-features fade-in">
+
+          <div class="why-feature">
+            <span class="why-feature-num">01</span>
+            <div class="why-feature-content">
+              <h4 class="why-feature-title">Premium Quality Materials</h4>
+              <p class="why-feature-text">From hand-finished silks to structured Italian leathers every material we stock is sourced for its unrivalled feel and lasting beauty.</p>
+            </div>
+          </div>
+
+          <div class="why-feature">
+            <span class="why-feature-num">02</span>
+            <div class="why-feature-content">
+              <h4 class="why-feature-title">Carefully Curated Collections</h4>
+              <p class="why-feature-text">Our buyers travel the globe to discover pieces that transcend seasons timeless, versatile, and always impeccable.</p>
+            </div>
+          </div>
+
+          <div class="why-feature">
+            <span class="why-feature-num">03</span>
+            <div class="why-feature-content">
+              <h4 class="why-feature-title">Unique &amp; Limited Pieces</h4>
+              <p class="why-feature-text">We intentionally limit quantities. When you shop with us, you wear something that few others will ever own.</p>
+            </div>
+          </div>
+
+          <div class="why-feature">
+            <span class="why-feature-num">04</span>
+            <div class="why-feature-content">
+              <h4 class="why-feature-title">Exceptional Client Experience</h4>
+              <p class="why-feature-text">From first browse to final delivery, we provide a personalised, white-glove service worthy of the collections we offer.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta-section" id="cta">
+    <div class="fade-in">
+      <p class="cta-eyebrow">The Collection Awaits</p>
+      <div class="gold-line"></div>
+      <h2 class="cta-heading">Step Into Luxury</h2>
+      <a href="#" class="btn-luxury"><span>Explore Collection</span></a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-inner">
+
+      <div class="footer-brand"><span>21</span> Luxuries</div>
+
+      <p class="footer-copy">&copy; 2026 21 Luxuries. All rights reserved.</p>
+
+      <div class="footer-social">
+        <!-- Instagram -->
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <!-- Pinterest -->
+        <a href="#" class="social-link" aria-label="Pinterest">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.76 1.22-5.14 1.22-5.14s-.31-.62-.31-1.54c0-1.45.84-2.53 1.88-2.53.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.48-.25 1.04.52 1.89 1.54 1.89 1.85 0 3.27-1.95 3.27-4.77 0-2.49-1.79-4.23-4.35-4.23-2.96 0-4.7 2.22-4.7 4.52 0 .89.34 1.85.77 2.37.08.1.09.19.07.29-.08.32-.25 1.04-.29 1.18-.05.19-.16.23-.37.14-1.39-.65-2.26-2.68-2.26-4.32 0-3.51 2.55-6.74 7.36-6.74 3.86 0 6.86 2.75 6.86 6.42 0 3.83-2.41 6.91-5.76 6.91-1.12 0-2.18-.58-2.54-1.27l-.69 2.57c-.25.96-.93 2.16-1.38 2.89.04.01.08.01.12.02C12 22 12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+          </svg>
+        </a>
+        <!-- TikTok / X icon placeholder -->
+        <a href="#" class="social-link" aria-label="X / Twitter">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <!-- Facebook -->
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    /* ---- Navbar scroll state ---- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ---- Intersection Observer for fade-in ---- */
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+  <script type="text/javascript" src="js/nav.js"></script>
+  <script type="text/javascript" src="js/splash.js"></script>
+</body>
+</html>

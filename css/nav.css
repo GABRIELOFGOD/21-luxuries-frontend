@@ -11,6 +11,14 @@ nav{
     top:0;
     
 }
+
+@media screen and (max-width:768px) {
+    nav{
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+}
+
 a{
     text-decoration: none;
 }
