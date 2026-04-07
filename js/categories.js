@@ -1,6 +1,6 @@
 // constants
-// const BACKEND_URL = "https://www.app.21luxuries.com/api";
-const BACKEND_URL = "https://www.app.21luxuries.com/api";
+// const BACKEND_URL = "https://app.21luxuries.com/api";
+const BACKEND_URL = "https://app.21luxuries.com/api";
 let categories = [];
 let categoriesLoading = false;
 let categoriesByProductsContainer = document.querySelector(".categories-by-products");

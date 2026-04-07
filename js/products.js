@@ -1,6 +1,6 @@
 // constants
-// const BACKEND_URL = "https://www.app.21luxuries.com/api";
-const BACKEND_URL = "https://www.app.21luxuries.com/api";
+// const BACKEND_URL = "https://app.21luxuries.com/api";
+const BACKEND_URL = "https://app.21luxuries.com/api";
 let productLoading = false;
 let products = [];
 let categories = [];
@@ -254,6 +254,7 @@ const fetchProducts = async () => {
     productLoading = true;
     renderProducts();
     const response = await fetch(`${BACKEND_URL}/products?category=${productsCategory.toString().toLowerCase()}&page=${pagination.page}&limit=${pagination.limit}`);
+    // console.log("Fetched products:", response);
     const data = await response.json();
     products = data.products;
     pagination = data.pagination;
