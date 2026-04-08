@@ -311,3 +311,90 @@ img{
     transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.34,1.56,0.64,1);
 }
 
+/* Container layout */
+#top-banner,
+#bottom-banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+/* Banner wrapper */
+.banner {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  aspect-ratio: 5 / 4; /* 🔥 Enforces 5:4 */
+  overflow: hidden;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Image */
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Hover zoom effect */
+.banner:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay */
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  /* color: #1a3d2b; */
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 16px;
+  gap: 10px;
+}
+
+/* Title */
+.banner-overlay h2 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #1a3d2b;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Description */
+.banner-overlay span {
+  font-size: 0.95rem;
+  margin: 0;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+/* Button */
+.banner-overlay button {
+  width: fit-content;
+  padding: 8px 14px;
+  /* border: 1px solid #000; */
+  border: none;
+  /* background: #fff; */
+  background: transparent;
+  color: #fff;
+  /* color: #000; */
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.banner-overlay button:hover {
+  background: #000;
+  color: #fff;
+}
