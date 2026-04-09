@@ -328,6 +328,7 @@ img{
   overflow: hidden;
   border-radius: 6px;
   cursor: pointer;
+  z-index: -10;
 }
 
 @media screen and (max-width: 640px) {
