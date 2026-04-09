@@ -55,6 +55,7 @@ nav a:hover{
     letter-spacing: 2px;
     font-weight: 600;
     font-size:14px;
+    z-index: 50;
     /* font-family: 'Montserrat', sans-serif; */
 }
 .burger div{
@@ -84,8 +85,8 @@ nav a:hover{
     .nav-links{
        position:absolute;
        right:0px;
-       height:90vh;
-       top:10vh;
+       height:92vh;
+       top:8vh;
        background-color: #232323;
        display:flex;
        flex-direction: column;
