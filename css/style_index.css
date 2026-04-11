@@ -54,7 +54,7 @@ img{
     grid-gap:20px;
     margin-top:10px;
     margin-bottom: 10px;
-    margin-left:30px;
+    margin-left:20px;
     margin-right: 20px;
 }
 .index-grid-img-1{
@@ -135,7 +135,7 @@ img{
     grid-row-start: 1;
     grid-row-end: 3;
     grid-gap: 20px;
-    margin-left:20px;
+    /* margin-left:20px; */
 }
 @media screen and (max-width:1130px){
     .index-grid-img-3{
@@ -334,9 +334,9 @@ img{
 @media screen and (max-width: 640px) {
     #top-banner,
     #bottom-banner {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
     
     .banner {
