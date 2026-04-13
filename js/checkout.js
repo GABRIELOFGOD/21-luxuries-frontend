@@ -6,7 +6,7 @@
 // Configuration
 const CHECKOUT_CONFIG = {
   API_BASE_URL: 'https://app.21luxuries.com/api',
-  WHATSAPP_NUMBER: '2349039194587',
+  WHATSAPP_NUMBER: '2349019176161',
   TRACKING_BASE_URL: "https://app.21luxuries.com" + '/order/', // Will be appended with order ID
 };
 
