@@ -101,13 +101,15 @@ function closeCheckoutModal() {
  */
 function updateCheckoutPreview() {
   const subtotal = cart.getTotalPrice();
-  const tax = Math.floor(subtotal * 0.1);
-  const shipping = subtotal >= 50000 ? 0 : 2500;
+  // const tax = Math.floor(subtotal * 0.1);
+  const tax = 0;
+  const shipping = 0;
+  // const shipping = subtotal >= 50000 ? 0 : 2500;
   const total = subtotal + tax + shipping;
 
   document.getElementById('previewSubtotal').textContent = formatPrice(subtotal);
   document.getElementById('previewTax').textContent = formatPrice(tax);
-  document.getElementById('previewShipping').textContent = shipping === 0 ? 'FREE' : formatPrice(shipping);
+  document.getElementById('previewShipping').textContent = shipping === 0 ? '₦0' : formatPrice(shipping);
   document.getElementById('previewTotal').textContent = formatPrice(total);
 }
 

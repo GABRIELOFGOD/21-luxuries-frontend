@@ -92,7 +92,8 @@ window.removeItemFromCart = function (productId) {
  */
 function updateCartSummary() {
   const subtotal = cart.getTotalPrice();
-  const tax = Math.floor(subtotal * 0.1);
+  const tax = 0;
+  // const tax = Math.floor(subtotal * 0.1);
   const total = subtotal + tax;
 
   document.getElementById('summarySubtotal').textContent = formatPrice(subtotal);
@@ -102,9 +103,9 @@ function updateCartSummary() {
   // Update shipping based on subtotal (free over ₦50,000)
   const shippingElement = document.getElementById('summaryShipping');
   if (subtotal >= 50000) {
-    shippingElement.textContent = 'FREE';
+    shippingElement.textContent = '₦0';
   } else {
-    shippingElement.textContent = formatPrice(2500);
+    shippingElement.textContent = "₦0";
   }
 }
 

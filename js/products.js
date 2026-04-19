@@ -207,6 +207,9 @@ const renderProducts = () => {
       <div class="product-container">
         ${products.map(product => `
           <div key="${product._id}" class="product" id="${product._id}">
+            ${product.images.length > 1 ? `<div class="image-count">
+              <span class="img-ct-text">${product.images.length} images</span>
+            </div>` : ""}
             <div class="product-image-wrapper">
               <img src="${product.images[0]}" alt="${product.name}" class="product-image">
             </div>

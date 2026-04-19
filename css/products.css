@@ -76,7 +76,28 @@
     border-radius: 4px;
     overflow: hidden;
     background: white;
+    position: relative;
 }
+
+.image-count {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  padding: 2px 5px;
+  background: #6666666d;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+/* .image-count span {
+  color: red;
+  font-weight: bold;
+  font-size: 8px;
+  z-index: 30;
+} */
 
 .product:hover {
     transform: translateY(-5px);

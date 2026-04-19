@@ -6,14 +6,23 @@ let categoriesLoading = false;
 let categoriesByProductsContainer = document.querySelector(".categories-by-products");
 
 // Format price with abbreviations (K, M, etc.)
-const formatPrice = (price) => {
-  if (price >= 1_000_000) {
-    return (price / 1_000_000).toFixed(1) + "M";
-  } else if (price >= 1_000) {
-    return (price / 1_000).toFixed(1) + "K";
-  }
-  return price.toFixed(2);
-};
+// const formatPrice = (price) => {
+//   if (price >= 1_000_000) {
+//     return (price / 1_000_000).toFixed(1) + "M";
+//   } else if (price >= 1_000) {
+//     return (price / 1_000).toFixed(1) + "K";
+//   }
+//   return price.toFixed(2);
+// };
+
+function formatPrice(price) {
+  return new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(price);
+}
 
 // Fetch categories
 const fetchCategories = async () => {
@@ -76,7 +85,7 @@ const initializeCategories = async () => {
                   <h4 class="product-name">${product.name}</h4>
                   <span class="product-description">${product.description || 'Explore this item'}</span>
                   <div class="product-card-bottom">
-                    <b class="colored-word price">₦${formatPrice(product.price)}</b>
+                    <b class="colored-word price">${formatPrice(product.price)}</b>
                   </div>
                 </div>
               </a>
